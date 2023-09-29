@@ -1,5 +1,7 @@
 import React, {useState, useEffect}  from 'react';
 import {SERVER_URL} from '../constants';
+import {Link} from 'react-router-dom';
+
 
 
 //  required properties -  assignmentId
@@ -38,6 +40,7 @@ function GradeAssignment ( ) {
     const saveGrades = ( ) => {
       setMessage(''); 
       console.log("Gradebook.save ");     
+      console.log(JSON.stringify( grades ))
       fetch(`${SERVER_URL}/gradebook/${assignmentId}` , 
           {  
             method: 'PUT', 
@@ -77,6 +80,7 @@ function GradeAssignment ( ) {
 
     return (
       <div>
+        <Link to={`/`} >Home</Link>
         <h3>Assignment Grades</h3>
         <div margin="auto" >
           <h4 id="gmessage" >{message}&nbsp;</h4>
