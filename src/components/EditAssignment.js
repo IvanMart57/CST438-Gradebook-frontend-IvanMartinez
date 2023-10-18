@@ -89,6 +89,7 @@ function EditAssignment(props) {
               <input
                 name="assignent"
                 ref={nameRef} 
+                id = "name"
                 placeholder='Enter Here'
                 value = {name}
                 onChange={e => setName(e.target.value)}
@@ -100,6 +101,7 @@ function EditAssignment(props) {
                 name="assignent"
                 ref={idRef} 
                 value = {id}
+                id = "id"
                 onChange={e => setId(e.target.value)}
                 placeholder='Enter Valid Id'
                 type="text"
@@ -108,6 +110,7 @@ function EditAssignment(props) {
                 <td>
                 <input
                 name="assignent"
+                id = "date"
                 ref={dateRef}
                 value = {date} 
                 placeholder='YYYY-MM-DD'
