@@ -74,6 +74,7 @@ function AddAssignment(props) {
                       <td>
                     <input
                       name="assignent"
+                      id = "name"
                       ref={nameRef} 
                       placeholder='Enter Here'
                       type="text"
@@ -82,6 +83,7 @@ function AddAssignment(props) {
                       <td>
                         <input
                       name="assignent"
+                      id = "idInput"
                       ref={idRef} 
                       placeholder='Enter Valid Id'
                       type="text"
@@ -90,6 +92,7 @@ function AddAssignment(props) {
                       <td>
                         <input
                       name="assignent"
+                      id = "date"
                       ref={dateRef} 
                       placeholder='YYYY-MM-DD'
                       type="text"
