@@ -10,6 +10,8 @@ function AddAssignment(props) {
   const idRef = useRef();
   const dateRef = useRef();
 
+  const token = sessionStorage.getItem("jwt");
+
   const [message, setMessage] = useState('');
   const headers = ['Assignment Name', 'Course Id', 'Due Date'];
 
@@ -32,7 +34,8 @@ function AddAssignment(props) {
     fetch(`${SERVER_URL}/assignment/new?id=${courseId}&name=${name}&due=${dueDate}` , 
         {  
           method: 'POST', 
-          headers: { 'Content-Type': 'application/json', }, 
+          headers: { 'Content-Type': 'application/json',
+                     'Authorization' : token }, 
         } )
     .then(res => {
         if (res.ok) {
@@ -52,7 +55,7 @@ function AddAssignment(props) {
   return (
       <div>
         <div>
-        <Link to={`/`} >Home</Link>
+        <Link to={`/listAssignment`} >Home</Link>
         <h4 id="gmessage" >{message}&nbsp;</h4>
         <table className="Center"> 
                 <thead>
