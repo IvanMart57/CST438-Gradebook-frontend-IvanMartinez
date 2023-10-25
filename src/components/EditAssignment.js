@@ -9,7 +9,8 @@ function EditAssignment(props) {
   const idRef = useRef();
   const dateRef = useRef();
 
-
+  const token = sessionStorage.getItem("jwt");
+  
   let assignmentId=0;
   const [message, setMessage] = useState('');
   const [assignment, setAssignment] = useState('');
@@ -30,7 +31,9 @@ function EditAssignment(props) {
   const fetchDetails = ( ) => {
       setMessage('');
       console.log("fetchDetails "+assignmentId);
-      fetch(`${SERVER_URL}/assignment/${assignmentId}`)
+      fetch(`${SERVER_URL}/assignment/${assignmentId}`,{
+        headers: {'Authorization' : token}
+      })
       .then((response) => response.json()) 
       .then((data) => { setAssignment(data) })        
       .catch(err => { 
@@ -56,7 +59,8 @@ function EditAssignment(props) {
       fetch(`${SERVER_URL}/assignment/update/?id=${courseId}&name=${name}&date=${dueDate}` , 
           {  
             method: 'PUT', 
-            headers: { 'Content-Type': 'application/json', }, 
+            headers: { 'Content-Type': 'application/json',
+                        'Authorization' : token   }, 
           } )
       .then(res => {
           if (res.ok) {
@@ -73,7 +77,7 @@ function EditAssignment(props) {
 
   return (
       <div>
-      <Link to={`/`} >Home</Link>
+      <Link to={`/listAssignment`} >Home</Link>
        <h3>Assignment Grades</h3>
         <div margin="auto" >
           <h4 id="gmessage" >{message}&nbsp;</h4>
